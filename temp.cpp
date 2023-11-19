@@ -1,154 +1,71 @@
 
-#include <iostream>
-#include <cstdlib>
-
+                #include <iostream>
 using namespace std;
 
-struct node
+// Define a node structure for the stack
+struct Node
 {
-    int data;
-    struct node *next;
+    int data;     // Data of the node
+    Node *next;   // Pointer to the next node in the stack
 };
 
+// Define a stack class
 class stack
 {
-public:
-    struct node *top;
+    Node *head, *tail; // Pointers to the head and tail nodes
 
+public:
+    // Constructor to initialize an empty stack
     stack()
     {
-        top = NULL;
+        head = NULL;
+        tail = NULL;
     }
 
-    void insert(int new_data)
+    // Function to insert a new element into the stack
+    void insert(int data)
     {
-        struct node *new_node = new node;
-        new_node->data = new_data;
-        new_node->next = top;
-        top = new_node;
+        Node *new_ptr = new Node; // Create a new node
+        new_ptr->data = data;     // Set its data
+        new_ptr->next = NULL;     // Initialize its next pointer to NULL
+
+        // If the stack is empty, set both head and tail to the new node
+        if (tail == NULL)
+        {
+            tail = new_ptr;
+            head = tail;
+        }
+        else
+        {
+            // If the stack is not empty, append the new node to the tail
+            tail->next = new_ptr;
+            tail = new_ptr;
+        }
     }
 
+    // Function to display the elements of the stack
     void display()
     {
-        struct node *ptr;
-        ptr = top;
+        Node *ptr = head; // Start from the head of the stack
         while (ptr != NULL)
         {
-            cout << ptr->data << " ";
-            ptr = ptr->next;
-        }
-        cout << endl;
-    }
-
-    void pop()
-    {
-        if (top == NULL)
-        {
-            cout << "Stack is empty. Cannot pop.\n";
-        }
-        else
-        {
-            struct node *temp = top;
-            top = top->next;
-            delete temp;
-        }
-    }
-
-    void deleteFront()
-    {
-        if (top == NULL)
-        {
-            cout << "Stack is empty. Cannot delete from the front.\n";
-        }
-        else
-        {
-            struct node *temp = top;
-            top = top->next;
-            delete temp;
-        }
-    }
-
-    void deleteAfterNode(int value)
-    {
-        if (top == NULL)
-        {
-            cout << "Stack is empty. Cannot delete after a given node.\n";
-        }
-        else
-        {
-            struct node *current = top;
-            while (current != NULL && current->data != value)
-            {
-                current = current->next;
-            }
-
-            if (current == NULL || current->next == NULL)
-            {
-                cout << "Node with the given value not found or it's the last node.\n";
-            }
-            else
-            {
-                struct node *temp = current->next;
-                current->next = temp->next;
-                delete temp;
-            }
-        }
-    }
-
-    void deleteEnd()
-    {
-        if (top == NULL)
-        {
-            cout << "Stack is empty. Cannot delete from the end.\n";
-        }
-        else
-        {
-            if (top->next == NULL)
-            {
-                delete top;
-                top = NULL;
-            }
-            else
-            {
-                struct node *current = top;
-                while (current->next->next != NULL)
-                {
-                    current = current->next;
-                }
-                delete current->next;
-                current->next = NULL;
-            }
+            cout << ptr->data << " "; // Print the data of each node
+            ptr = ptr->next;           // Move to the next node
         }
     }
 };
 
 int main()
 {
-    stack list;
+    stack stack;   // Create an instance of the stack
 
-    // Inserting random values into the stack
-    for (int i = 0; i < 10; i++)
-    {
-        list.insert(rand() % 10);
-    }
+    // Insert some elements into the stack
+    stack.insert(5);
+    stack.insert(6);
+    stack.insert(7);
 
-    cout << "Original Stack: ";
-    list.display();
-
-    // Deleting a node at the front
-    list.deleteFront();
-    cout << "After deleting front: ";
-    list.display();
-
-    // Deleting a node after a given node (e.g., after the first node)
-    list.deleteAfterNode(list.top->data);
-    cout << "After deleting after the first node: ";
-    list.display();
-
-    // Deleting a node at the end
-    list.deleteEnd();
-    cout << "After deleting from the end: ";
-    list.display();
+    // Display the elements of the stack
+    stack.display();
 
     return 0;
 }

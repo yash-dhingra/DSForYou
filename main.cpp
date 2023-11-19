@@ -722,5 +722,361 @@ int main()
 
         cout << "*************************************************************************" << endl;
         break;
+    case 2:
+        cout << "Great! Let's learn about Stacks!" << endl;
+        cout << endl;
+        cout << "Stack:\n"
+             << "A stack is a linear data structure that follows the Last In First Out (LIFO) principle.\n"
+             << "The last element inserted into the stack is the first one to be deleted from the stack.\n"
+             << "Stacks are used to implement functions, expressions, etc.\n\n"
+             << "Advantages:\n"
+             << "1. Easy to implement.\n"
+             << "2. Memory is saved as pointers are not involved.\n"
+             << "3. Insertion and deletion are easy.\n\n"
+             << "Disadvantages:\n"
+             << "1. It is not dynamic. It is static.\n"
+             << "2. It is not efficient in memory usage.\n"
+             << "3. It is not efficient in execution.\n";
+        cout << "Enter any number to Continue...\n";
+        cin >> wait;
+        cout << "*************************************************************************" << endl;
+        cout << "Now that you know what a Stack is, let's see insertion and deletion operation on a stack!" << endl;
+        cout << endl;
+        cout << "Enter any number to Continue...\n";
+        cin >> wait;
+        cout << "*************************************************************************" << endl;
+        cout << "Since Stacks follow LIFO all Insertions and deletions are done at the top of the stack. Time for the Code.....\n";
+        // Display Code
+        cout << "Enter any number to Continue...\n";
+        cin >> wait;
+        cout << "*************************************************************************" << endl;
+        cout << R"(
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+
+// Define a node structure for the stack
+struct node
+{
+    int data;            // Data of the node
+    struct node *next;   // Pointer to the next node in the stack
+};
+
+// Define a stack class
+class stack
+{
+    struct node *top;   // Pointer to the top node of the stack
+
+public:
+    // Function to insert a new element into the stack
+    void insert(int new_data)
+    {
+        struct node *new_node = new node;  // Create a new node
+        new_node->data = new_data;         // Set its data
+        new_node->next = top;              // Point the new node to the current top
+        top = new_node;                    // Update the top to the new node
     }
+
+    // Function to display the elements of the stack
+    void display()
+    {
+        struct node *ptr;
+        ptr = top;
+        while (ptr != NULL)
+        {
+            cout << ptr->data << " ";  // Print the data of each node
+            ptr = ptr->next;           // Move to the next node
+        }
+        cout << endl;
+    }
+
+    // Constructor to initialize the stack with an empty state
+    stack()
+    {
+        top = NULL;  // Set top to NULL indicating an empty stack
+    }
+
+    // Function to pop (remove) the top element from the stack
+    void pop()
+    {
+        top = top->next;  // Move the top to the next node, effectively removing the top node
+    }
+};
+
+int main()
+{
+    stack list;  // Create an instance of the stack
+
+    // Insert 10 random values into the stack
+    for (int i = 0; i < 10; i++)
+    {
+        list.insert(rand() % 10);
+    }
+
+    // Display the elements of the stack
+    list.display();
+
+    return 0;
+}
+)";
+        cout << "*************************************************************************" << endl;
+        cout << "Would you like to try to run this Code in a new file? (Y/N): ";
+        cin >> run;
+        cout << "*************************************************************************" << endl;
+        if(run=='Y'){
+            string str = R"(
+                #include <iostream>
+#include <cstdlib>
+using namespace std;
+
+// Define a node structure for the stack
+struct node
+{
+    int data;            // Data of the node
+    struct node *next;   // Pointer to the next node in the stack
+};
+
+// Define a stack class
+class stack
+{
+    struct node *top;   // Pointer to the top node of the stack
+
+public:
+    // Function to insert a new element into the stack
+    void insert(int new_data)
+    {
+        struct node *new_node = new node;  // Create a new node
+        new_node->data = new_data;         // Set its data
+        new_node->next = top;              // Point the new node to the current top
+        top = new_node;                    // Update the top to the new node
+    }
+
+    // Function to display the elements of the stack
+    void display()
+    {
+        struct node *ptr;
+        ptr = top;
+        while (ptr != NULL)
+        {
+            cout << ptr->data << " ";  // Print the data of each node
+            ptr = ptr->next;           // Move to the next node
+        }
+        cout << endl;
+    }
+
+    // Constructor to initialize the stack with an empty state
+    stack()
+    {
+        top = NULL;  // Set top to NULL indicating an empty stack
+    }
+
+    // Function to pop (remove) the top element from the stack
+    void pop()
+    {
+        top = top->next;  // Move the top to the next node, effectively removing the top node
+    }
+};
+
+int main()
+{
+    stack list;  // Create an instance of the stack
+
+    // Insert 10 random values into the stack
+    for (int i = 0; i < 10; i++)
+    {
+        list.insert(rand() % 10);
+    }
+
+    // Display the elements of the stack
+    list.display();
+
+    return 0;
+}
+)";
+            make_temp(str);
+        }
+        break;
+    case 3:
+        cout << "Great! Let's learn about Queues!" << endl;
+        cout << endl;
+        cout << "Queue:\n"
+             << "A queue is a linear data structure that follows the First In First Out (FIFO) principle.\n"
+             << "The first element inserted into the queue is the first one to be deleted from the queue.\n"
+             << "Queues are used to implement functions, expressions, etc.\n\n"
+             << "Advantages:\n"
+             << "1. Easy to implement.\n"
+             << "2. Memory is saved as pointers are not involved.\n"
+             << "3. Insertion and deletion are easy.\n\n"
+             << "Disadvantages:\n"
+             << "1. It is not dynamic. It is static.\n"
+             << "2. It is not efficient in memory usage.\n"
+             << "3. It is not efficient in execution.\n";
+        cout << "Enter any number to Continue...\n";
+        cin >> wait;
+        cout << "*************************************************************************" << endl;
+        cout << "Now that you know what a Queue is, let's see insertion and deletion operation on a queue!" << endl;
+        cout << endl;
+        cout << "Enter any number to Continue...\n";
+        cin >> wait;
+        cout << "*************************************************************************" << endl;
+        cout << "Since Queues follow FIFO all Insertions and deletions are done at the end of the queue. Time for the Code.....\n";
+        // Display Code
+        cout << "Enter any number to Continue...\n";
+        cin >> wait;
+        cout << "*************************************************************************" << endl;
+        cout << R"(
+#include <iostream>
+using namespace std;
+
+// Define a node structure for the stack
+struct Node
+{
+    int data;     // Data of the node
+    Node *next;   // Pointer to the next node in the stack
+};
+
+// Define a stack class
+class stack
+{
+    Node *head, *tail; // Pointers to the head and tail nodes
+
+public:
+    // Constructor to initialize an empty stack
+    stack()
+    {
+        head = NULL;
+        tail = NULL;
+    }
+
+    // Function to insert a new element into the stack
+    void insert(int data)
+    {
+        Node *new_ptr = new Node; // Create a new node
+        new_ptr->data = data;     // Set its data
+        new_ptr->next = NULL;     // Initialize its next pointer to NULL
+
+        // If the stack is empty, set both head and tail to the new node
+        if (tail == NULL)
+        {
+            tail = new_ptr;
+            head = tail;
+        }
+        else
+        {
+            // If the stack is not empty, append the new node to the tail
+            tail->next = new_ptr;
+            tail = new_ptr;
+        }
+    }
+
+    // Function to display the elements of the stack
+    void display()
+    {
+        Node *ptr = head; // Start from the head of the stack
+        while (ptr != NULL)
+        {
+            cout << ptr->data << " "; // Print the data of each node
+            ptr = ptr->next;           // Move to the next node
+        }
+    }
+};
+
+int main()
+{
+    stack stack;   // Create an instance of the stack
+
+    // Insert some elements into the stack
+    stack.insert(5);
+    stack.insert(6);
+    stack.insert(7);
+
+    // Display the elements of the stack
+    stack.display();
+
+    return 0;
+}
+)";
+        cout << "*************************************************************************" << endl;
+        cout << "Would you like to try to run this Code in a new file? (Y/N): ";
+        cin >> run;
+        cout << "*************************************************************************" << endl;
+        if(run=='Y'){
+            string str = R"(
+                #include <iostream>
+using namespace std;
+
+// Define a node structure for the stack
+struct Node
+{
+    int data;     // Data of the node
+    Node *next;   // Pointer to the next node in the stack
+};
+
+// Define a stack class
+class stack
+{
+    Node *head, *tail; // Pointers to the head and tail nodes
+
+public:
+    // Constructor to initialize an empty stack
+    stack()
+    {
+        head = NULL;
+        tail = NULL;
+    }
+
+    // Function to insert a new element into the stack
+    void insert(int data)
+    {
+        Node *new_ptr = new Node; // Create a new node
+        new_ptr->data = data;     // Set its data
+        new_ptr->next = NULL;     // Initialize its next pointer to NULL
+
+        // If the stack is empty, set both head and tail to the new node
+        if (tail == NULL)
+        {
+            tail = new_ptr;
+            head = tail;
+        }
+        else
+        {
+            // If the stack is not empty, append the new node to the tail
+            tail->next = new_ptr;
+            tail = new_ptr;
+        }
+    }
+
+    // Function to display the elements of the stack
+    void display()
+    {
+        Node *ptr = head; // Start from the head of the stack
+        while (ptr != NULL)
+        {
+            cout << ptr->data << " "; // Print the data of each node
+            ptr = ptr->next;           // Move to the next node
+        }
+    }
+};
+
+int main()
+{
+    stack stack;   // Create an instance of the stack
+
+    // Insert some elements into the stack
+    stack.insert(5);
+    stack.insert(6);
+    stack.insert(7);
+
+    // Display the elements of the stack
+    stack.display();
+
+    return 0;
+}
+)";
+            make_temp(str);
+        }
+        break;
+
+    }
+    
 }
