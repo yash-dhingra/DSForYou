@@ -73,7 +73,7 @@ int main()
         }
         else return 0;
         cout << "*************************************************************************" << endl;
-        cout << "Would you like to revise of move to the next data structure? (R/N): ";
+        cout << "Would you like to revise or move to the next data structure? (R/N): ";
         char choice1;
         cin >> choice1;
         cout << "*************************************************************************" << endl;
